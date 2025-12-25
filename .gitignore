@@ -1,0 +1,52 @@
+# CodeBuddy 相关
+.codebuddy/
+
+# Node 相关
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# Python 相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+
+# IDE 相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Termux 相关
+.ssh/
+.local/
+
+# 日志文件
+*.log
+
+# 临时文件
+*.tmp
+*.bak
+
+# npm 缓存
+.npm/
+
+# nvm
+.nvm/
