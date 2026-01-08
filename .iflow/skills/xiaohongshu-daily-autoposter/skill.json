@@ -1,0 +1,6 @@
+{
+  "name": "xiaohongshu-daily-autoposter",
+  "description": "Automated daily content generation and posting for Xiaohongshu (Little Red Book). Uses AI-powered viral content templates, scheduled execution, and automated image generation to create and publish high-engagement posts every day. Use when users need to automate Xiaohongshu content creation including: (1) Daily automated posting workflows, (2) Viral title and content generation based on proven patterns, (3) Automated cover image generation with design templates, (4) Scheduled content calendar management, and (5) Content optimization based platform best practices.",
+  "version": "1.0.0",
+  "license": "MIT"
+}

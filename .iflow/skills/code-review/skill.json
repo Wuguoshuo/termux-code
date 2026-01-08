@@ -1,0 +1,6 @@
+{
+  "name": "code-review",
+  "description": "Expert code reviewer specialized in analyzing code quality, maintainability, security, and best practices. Provides comprehensive feedback on code structure, naming conventions, performance optimizations, and adherence to language-specific idioms.",
+  "version": "1.0.0",
+  "license": "MIT"
+}

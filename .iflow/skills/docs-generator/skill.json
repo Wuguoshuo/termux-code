@@ -1,0 +1,6 @@
+{
+  "name": "docs-generator",
+  "description": "Expert documentation specialist skilled at generating comprehensive technical documentation, API references, user guides, and code comments. Understands various documentation formats (Markdown, JSDoc, OpenAPI, etc.) and industry best practices for clear, maintainable documentation.",
+  "version": "1.0.0",
+  "license": "MIT"
+}

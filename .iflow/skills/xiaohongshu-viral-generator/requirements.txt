@@ -1,0 +1,20 @@
+# Core Dependencies
+pillow>=10.0.0          # Image processing
+numpy>=1.24.0           # Numerical computing
+pyyaml>=6.0             # YAML configuration parsing
+python-dateutil>=2.8.0  # Date handling
+requests>=2.31.0        # HTTP requests
+
+# AI API Clients
+openai>=1.0.0           # DALL-E 3 API for image generation
+
+# Task Scheduling
+# apscheduler>=3.10.0   # Advanced scheduling (optional)
+
+# Testing
+pytest>=7.0.0           # Testing framework
+pytest-cov>=4.0.0       # Coverage reports
+
+# Development
+black>=23.0.0           # Code formatting
+mypy>=1.0.0             # Type checking

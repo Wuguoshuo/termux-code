@@ -1,0 +1,10 @@
+# Core dependencies
+pillow>=10.0.0
+numpy>=1.24.0
+python-dateutil>=2.8.0
+PyYAML>=6.0
+
+# Optional for advanced features
+# apscheduler>=3.10.0  # For advanced scheduling
+# pytest>=7.0.0        # For testing
+# pytest-cov>=4.0.0    # For test coverage

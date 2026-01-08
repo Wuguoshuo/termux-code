@@ -1,0 +1,13 @@
+export SSH_HOST="gx6.co""[D
+export SSH_HOST="gx6.co""
+export SSH_HOST="gx6.co"
+ping gx6.co
+export SSH_HOST="47.106.226.59""[D
+export SSH_HOST="47.106.226.59"
+./bin/iflow-ssh-manager.sh
+./bin/iflow-ssh-manager.sh -H 47.106.226.59
+./bin/iflow-ssh-manager.sh -H 47.106.226.59 -u root
+./bin/iflow-ssh-manager.sh -H 47.106.226.59 -u root -d /root
+yes
+tmus ls
+screen -ls

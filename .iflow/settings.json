@@ -1,0 +1,11 @@
+{
+  "cna": "B7DbIWHumSoBASQJiVyIcv7N",
+  "selectedAuthType": "oauth-iflow",
+  "apiKey": "sk-9840fd0915a2f02514dd845603d0115e",
+  "baseUrl": "https://apis.iflow.cn/v1",
+  "modelName": "glm-4.7",
+  "searchApiKey": "sk-9840fd0915a2f02514dd845603d0115e",
+  "hasViewedAnnualReport": {
+    "2025": true
+  }
+}

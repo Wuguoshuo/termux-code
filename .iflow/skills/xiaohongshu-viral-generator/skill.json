@@ -1,0 +1,6 @@
+{
+  "name": "xiaohongshu-viral-generator",
+  "description": "AI-powered Xiaohongshu viral content generator with automated scheduling and posting. Uses proven viral content patterns and AI image generation to create high-engagement posts. Use when users need: (1) Daily automated viral content creation, (2) AI-generated cover images and post visuals, (3) Scheduled content generation and calendar management, (4) Xiaohongshu API integration for automated posting, and (5) A/B testing with multiple title variants.",
+  "version": "2.0.0",
+  "license": "MIT"
+}

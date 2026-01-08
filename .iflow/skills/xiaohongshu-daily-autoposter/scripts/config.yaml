@@ -1,0 +1,98 @@
+# Xiaohongshu Daily Autoposter Configuration
+# ==========================================
+
+# Posting Settings
+posting:
+  default_time: "08:00"          # Daily posting time (24-hour format)
+  timezone: "Asia/Shanghai"      # Platform timezone
+  output_dir: "./output"         # Output directory for generated content
+  
+# Content Settings
+content:
+  topics:                        # Content topics to cycle through
+    - "职场效率"
+    - "生活美学"
+    - "学习成长"
+    - "时间管理"
+    - "个人成长"
+  templates: viral               # Content style: viral, educational, storytelling
+  min_length: 300               # Minimum body text length
+  max_length: 800               # Maximum body text length
+  title_count: 5                # Number of title variants to generate
+  
+# Image Settings
+image:
+  default_theme: vibrant         # Visual theme: vibrant, minimal, vintage, tech, nature
+  dimensions: "1000x1500"       # Platform optimal (width x height)
+  quality: 95                   # Output quality (1-100)
+  format: "PNG"                 # Output format: PNG, JPG
+  
+# Scheduler Settings
+scheduler:
+  enabled: true                  # Enable scheduled execution
+  log_level: "INFO"             # Logging level: DEBUG, INFO, WARNING, ERROR
+  log_file: "./logs/scheduler.log"  # Log file path
+  
+# Theme Settings (Visual Customization)
+themes:
+  vibrant:
+    colors:
+      - "#FF6B6B"              # Coral Red
+      - "#4ECDC4"              # Teal
+      - "#FFE66D"              # Yellow
+      - "#95E1D3"              # Mint
+      - "#F38181"              # Salmon
+    fonts:
+      header: "NotoSansSC-Bold"
+      body: "NotoSansSC-Regular"
+      
+  modern-minimalist:
+    colors:
+      - "#2D3436"              # Dark Gray
+      - "#636E72"              # Medium Gray
+      - "#B2BEC3"              # Light Gray
+      - "#DFE6E9"              # Very Light Gray
+      - "#FFFFFF"              # White
+    fonts:
+      header: "NotoSansSC-Light"
+      body: "NotoSansSC-Regular"
+      
+  warm-vintage:
+    colors:
+      - "#E17055"              # Terracotta
+      - "#FDCB6E"              # Amber
+      - "#FFEAA7"              # Cream
+      - "#D63031"              # Deep Red
+      - "#634232"              # Brown
+    fonts:
+      header: "NotoSerifSC-Bold"
+      body: "NotoSerifSC-Regular"
+      
+  tech-blue:
+    colors:
+      - "#0984E3"              # Bright Blue
+      - "#74B9FF"              # Light Blue
+      - "#00CEC9"              # Cyan
+      - "#2D3436"              # Dark
+      - "#FFFFFF"              # White
+    fonts:
+      header: "Roboto-Bold"
+      body: "Roboto-Regular"
+      
+  nature-green:
+    colors:
+      - "#00B894"              # Green
+      - "#55EFC4"              # Light Green
+      - "#FDCB6E"              # Yellow
+      - "#6C5CE7"              # Purple accent
+      - "#2D3436"              # Dark
+    fonts:
+      header: "NotoSansSC-Bold"
+      body: "NotoSansSC-Regular"
+
+# Output Settings
+output:
+  date_format: "%Y-%m-%d"       # Date format for output directories
+  include_metadata: true        # Include metadata.json with posts
+  include_title_options: true   # Include alternative titles
+  create_zip: false             # Create ZIP archive of output

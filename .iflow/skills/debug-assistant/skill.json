@@ -1,0 +1,6 @@
+{
+  "name": "debug-assistant",
+  "description": "Expert debugging assistant specialized in analyzing error messages, stack traces, and unexpected behavior. Helps identify root causes, suggests fixes, and guides through systematic debugging workflows across all programming languages and frameworks.",
+  "version": "1.0.0",
+  "license": "MIT"
+}
