@@ -1,0 +1,162 @@
+{
+  "workflow_id": "script-review",
+  "workflow_name": "剧本审校",
+  "workflow_description": "检查格式、逻辑、拍摄可行性",
+  "workflow_icon": "✅",
+  "workflow_category": "审核",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "script_path",
+        "description": "输入剧本文档路径",
+        "input_form": {
+          "type": "text",
+          "label": "请输入剧本文档的路径",
+          "placeholder": "例如：drafts/第1集-命运的相遇.md",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "read_script",
+      "node_type": "llm",
+      "node_name": "读取剧本",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "读取并分析剧本文档。\n\n剧本：{{script_path}}\n\n请提取以下信息：\n1. 场景列表\n2. 对白内容\n3. 总时长\n4. 人物表\n\n以 JSON 格式输出：\n{\n  \"场景列表\": [],\n  \"对白内容\": \"\",\n  \"总时长\": \"\",\n  \"人物表\": []\n}",
+        "output_type": "json",
+        "output_key": "script_info"
+      }
+    },
+    {
+      "node_id": "content_review",
+      "node_type": "llm",
+      "node_name": "内容审校",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "对剧本进行内容审校。\n\n剧本信息：{{script_info}}\n\n请检查以下内容：\n1. 情节连贯性（前后无矛盾）\n2. 人物性格一致性\n3. 对白风格（口语化、简洁）\n4. 逻辑矛盾（时间、地点、常识）\n\n以表格格式输出审校结果：\n| 检查项 | 结果 | 说明 |\n|--------|------|------|\n| 情节连贯 | ✅/❌ | 说明 |\n| 人物性格 | ✅/❌ | 说明 |\n| 对白风格 | ✅/❌ | 说明 |\n| 逻辑矛盾 | ✅/❌ | 说明 |\n\n并列出需要修改的问题（如果有）。",
+        "output_type": "text",
+        "output_key": "content_review_result"
+      }
+    },
+    {
+      "node_id": "format_review",
+      "node_type": "llm",
+      "node_name": "短剧适配审校",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "对剧本进行短剧适配审校。\n\n剧本信息：{{script_info}}\n\n请检查以下短剧适配项：\n1. 开场 3 秒是否有冲突/悬念\n2. 每 1 分钟是否有转折\n3. 对白是否密集、节奏快\n4. 心理描写是否转化为动作/对白\n5. 旁白使用是否合理（不超过 20%）\n\n以表格格式输出审校结果：\n| 检查项 | 结果 | 说明 |\n|--------|------|------|\n| 开场 3 秒 | ✅/❌ | 说明 |\n| 每分钟转折 | ✅/❌ | 说明 |\n| 对白密集 | ✅/❌ | 说明 |\n| 心理描写转化 | ✅/❌ | 说明 |\n| 旁白合理 | ✅/❌ | 说明 |\n\n并列出需要修改的问题（如果有）。",
+        "output_type": "text",
+        "output_key": "format_review_result"
+      }
+    },
+    {
+      "node_id": "technical_review",
+      "node_type": "llm",
+      "node_name": "技术审校",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "对剧本进行技术审校。\n\n剧本信息：{{script_info}}\n\n请检查以下技术项：\n1. 场景号是否连续（S1-01、S1-02...）\n2. 人物表是否完整\n3. 场景描述是否有画面感\n4. 镜头指示是否清晰\n5. 备注是否详细（道具、音乐、特效）\n\n以表格格式输出审校结果：\n| 检查项 | 结果 | 说明 |\n|--------|------|------|\n| 场景号连续 | ✅/❌ | 说明 |\n| 人物表完整 | ✅/❌ | 说明 |\n| 场景描述 | ✅/❌ | 说明 |\n| 镜头指示 | ✅/❌ | 说明 |\n| 备注详细 | ✅/❌ | 说明 |\n\n并列出需要修改的问题（如果有）。",
+        "output_type": "text",
+        "output_key": "technical_review_result"
+      }
+    },
+    {
+      "node_id": "compile_issues",
+      "node_type": "llm",
+      "node_name": "汇总问题与修改建议",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "汇总三遍审校的问题与修改建议。\n\n内容审校结果：{{content_review_result}}\n短剧适配审校结果：{{format_review_result}}\n技术审校结果：{{technical_review_result}}\n\n请汇总：\n1. 所有问题列表\n2. 修改建议\n3. 最终版本状态（可直接使用/需要修改）\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "issues_and_fixes"
+      }
+    },
+    {
+      "node_id": "generate_review_report",
+      "node_type": "llm",
+      "node_name": "生成审校报告",
+      "position": {
+        "x": 900,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上审校结果，生成完整的审校报告。\n\n内容审校：{{content_review_result}}\n短剧适配审校：{{format_review_result}}\n技术审校：{{technical_review_result}}\n问题与修改：{{issues_and_fixes}}\n\n请生成完整的审校报告，包含：\n1. 一、第一遍：内容审校\n2. 二、第二遍：短剧适配审校\n3. 三、第三遍：技术审校\n4. 四、问题与修改\n5. 五、最终版本\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "review_report"
+      }
+    },
+    {
+      "node_id": "output_review_report",
+      "node_type": "end",
+      "node_name": "输出审校报告",
+      "position": {
+        "x": 1100,
+        "y": 200
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_review_report",
+        "description": "输出完整的审校报告",
+        "output_form": {
+          "type": "text",
+          "label": "审校报告",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "read_script"},
+    {"source": "read_script", "target": "content_review"},
+    {"source": "read_script", "target": "format_review"},
+    {"source": "read_script", "target": "technical_review"},
+    {"source": "content_review", "target": "compile_issues"},
+    {"source": "format_review", "target": "compile_issues"},
+    {"source": "technical_review", "target": "compile_issues"},
+    {"source": "compile_issues", "target": "generate_review_report"},
+    {"source": "generate_review_report", "target": "output_review_report"}
+  ],
+  "workflow_variables": {
+    "script_path": {"type": "string", "description": "剧本文档路径"},
+    "script_info": {"type": "object", "description": "剧本信息"},
+    "content_review_result": {"type": "string", "description": "内容审校结果"},
+    "format_review_result": {"type": "string", "description": "短剧适配审校结果"},
+    "technical_review_result": {"type": "string", "description": "技术审校结果"},
+    "issues_and_fixes": {"type": "string", "description": "问题与修改建议"},
+    "review_report": {"type": "string", "description": "审校报告"},
+    "final_review_report": {"type": "string", "description": "最终输出的审校报告"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

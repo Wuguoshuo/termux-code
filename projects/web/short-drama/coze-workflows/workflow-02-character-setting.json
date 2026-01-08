@@ -1,0 +1,162 @@
+{
+  "workflow_id": "character-setting",
+  "workflow_name": "角色设定",
+  "workflow_description": "创建主角、反派、配角的人物小传",
+  "workflow_icon": "👥",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "brief_path",
+        "description": "输入设定文档路径",
+        "input_form": {
+          "type": "text",
+          "label": "请输入设定文档的路径",
+          "placeholder": "例如：_briefs/短剧名-设定brief.md",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "read_brief",
+      "node_type": "llm",
+      "node_name": "读取设定文档",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "读取并分析设定文档，提取以下信息：\n1. 题材类型\n2. 核心冲突\n3. 目标受众\n4. 世界观设定\n\n设定文档内容：{{brief_path}}\n\n请以 JSON 格式输出：\n{\n  \"题材类型\": \"\",\n  \"核心冲突\": \"\",\n  \"目标受众\": \"\",\n  \"世界观设定\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "brief_info"
+      }
+    },
+    {
+      "node_id": "design_protagonist",
+      "node_type": "llm",
+      "node_name": "创建主角",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据设定文档，创建主角的人物小传。\n\n题材类型：{{brief_info.题材类型}}\n核心冲突：{{brief_info.核心冲突}}\n世界观设定：{{brief_info.世界观设定}}\n\n请创建主角人物小传，包含：\n1. 基本信息（姓名、年龄、身份）\n2. 外貌特征\n3. 性格特点\n4. 核心目标\n5. 核心障碍\n6. 成长弧线\n7. 口头禅\n8. 详细小传（100-200 字）\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "protagonist"
+      }
+    },
+    {
+      "node_id": "design_antagonist",
+      "node_type": "llm",
+      "node_name": "创建反派",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据设定文档，创建反派（官配）的人物小传。\n\n题材类型：{{brief_info.题材类型}}\n核心冲突：{{brief_info.核心冲突}}\n世界观设定：{{brief_info.世界观设定}}\n\n请创建反派人物小传，包含：\n1. 基本信息（姓名、年龄、身份）\n2. 外貌特征\n3. 性格特点\n4. 核心动机\n5. 与主角关系\n6. 洗白点\n7. 详细小传（100-200 字）\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "antagonist"
+      }
+    },
+    {
+      "node_id": "design_supporting",
+      "node_type": "llm",
+      "node_name": "创建配角",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据设定文档，创建 3-4 个配角的人物小传。\n\n题材类型：{{brief_info.题材类型}}\n核心冲突：{{brief_info.核心冲突}}\n\n请创建配角列表，包含：\n1. 闺蜜/兄弟（提供建议，推动情节）\n2. 情敌/对手（制造误会，增加冲突）\n3. 神助攻（帮助主角，推进感情）\n4. 长辈（施加压力，增加困难）\n\n每个配角包含：\n- 基本信息\n- 性格特点\n- 作用\n- 与主角关系\n- 口头禅\n\n以 JSON 格式输出：\n{\n  \"配角列表\": []\n}",
+        "output_type": "json",
+        "output_key": "supporting"
+      }
+    },
+    {
+      "node_id": "design_relationship",
+      "node_type": "llm",
+      "node_name": "创建人物关系图",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据主角、反派、配角，创建人物关系图。\n\n主角：{{protagonist}}\n反派：{{antagonist}}\n配角：{{supporting}}\n\n请创建人物关系图，包含：\n1. 主线关系（主角与官配）\n2. 对立关系（主角与反派）\n3. 支持关系（主角与配角）\n4. 家庭关系\n\n以 JSON 格式输出：\n{\n  \"主线关系\": \"\",\n  \"对立关系\": \"\",\n  \"支持关系\": \"\",\n  \"家庭关系\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "relationship"
+      }
+    },
+    {
+      "node_id": "generate_character_doc",
+      "node_type": "llm",
+      "node_name": "生成角色设定文档",
+      "position": {
+        "x": 900,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成完整的角色设定文档。\n\n主角：{{protagonist}}\n反派：{{antagonist}}\n配角：{{supporting}}\n人物关系图：{{relationship}}\n\n请生成完整的角色设定文档，包含：\n1. 主角小传\n2. 反派小传\n3. 配角列表\n4. 人物关系图\n5. 角色对比表\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "character_doc"
+      }
+    },
+    {
+      "node_id": "output_character_doc",
+      "node_type": "end",
+      "node_name": "输出角色设定文档",
+      "position": {
+        "x": 1100,
+        "y": 200
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_character_doc",
+        "description": "输出完整的角色设定文档",
+        "output_form": {
+          "type": "text",
+          "label": "角色设定文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "read_brief"},
+    {"source": "read_brief", "target": "design_protagonist"},
+    {"source": "read_brief", "target": "design_antagonist"},
+    {"source": "read_brief", "target": "design_supporting"},
+    {"source": "design_protagonist", "target": "design_relationship"},
+    {"source": "design_antagonist", "target": "design_relationship"},
+    {"source": "design_supporting", "target": "design_relationship"},
+    {"source": "design_relationship", "target": "generate_character_doc"},
+    {"source": "generate_character_doc", "target": "output_character_doc"}
+  ],
+  "workflow_variables": {
+    "brief_path": {"type": "string", "description": "设定文档路径"},
+    "brief_info": {"type": "object", "description": "设定文档信息"},
+    "protagonist": {"type": "object", "description": "主角信息"},
+    "antagonist": {"type": "object", "description": "反派信息"},
+    "supporting": {"type": "object", "description": "配角信息"},
+    "relationship": {"type": "object", "description": "人物关系"},
+    "character_doc": {"type": "string", "description": "角色设定文档"},
+    "final_character_doc": {"type": "string", "description": "最终输出的角色设定文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

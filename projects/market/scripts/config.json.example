@@ -1,0 +1,51 @@
+{
+  "sources": [
+    {
+      "name": "东和茶仓API",
+      "type": "api",
+      "api_url": "https://api.heewoo.com/price/list",
+      "api_key": "your-api-key",
+      "auth_type": "bearer",
+      "field_mapping": {
+        "product_name": "productName",
+        "price": "price",
+        "unit": "unit",
+        "change_percent": "changePercent"
+      }
+    },
+    {
+      "name": "茶交所行情",
+      "type": "api",
+      "api_url": "https://api.tea-exchange.com/quote",
+      "api_key": "your-api-key",
+      "auth_type": "apikey"
+    },
+    {
+      "name": "手动录入",
+      "type": "manual",
+      "data": [
+        {
+          "product_name": "六堡茶2023年陈",
+          "price": 300.00,
+          "unit": "kg",
+          "change_percent": 3.5
+        }
+      ]
+    }
+  ],
+  "schedule": {
+    "price_etl": "0 9,14 * * *",
+    "daily_summary": "0 23 * * *"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "name": "liupao_price",
+    "table_prefix": "lp_"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "key_prefix": "liupao:price:"
+  }
+}

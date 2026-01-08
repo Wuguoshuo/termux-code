@@ -1,0 +1,681 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-12-28T12:00:00Z",
+  "resources": [
+    {
+      "id": "novel-liupucha",
+      "type": "NOVEL",
+      "title": "六堡风云",
+      "description": "一部关于六堡茶技艺传承的轻喜剧小说，讲述主人公陈阿三从学徒到传承人的成长故事",
+      "metadata": {
+        "author": "CodeBuddy",
+        "genre": "喜剧/成长/传承",
+        "wordCount": 50000,
+        "chapterCount": 10,
+        "targetAudience": "全年龄",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "chapters": [
+        {
+          "id": "chapter-1",
+          "number": 1,
+          "title": "命运的安排",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第1章-命运的安排.md",
+          "wordCount": 5000,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-2",
+          "number": 2,
+          "title": "学艺的日子",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第2章-学艺的日子.md",
+          "wordCount": 6000,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-3",
+          "number": 3,
+          "title": "渥堆初体验",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第3章-渥堆初体验.md",
+          "wordCount": 6500,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-4",
+          "number": 4,
+          "title": "陈化的等待",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第4章-陈化的等待.md",
+          "wordCount": 6200,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-5",
+          "number": 5,
+          "title": "分歧的开始",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第5章-分歧的开始.md",
+          "wordCount": 5500,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-6",
+          "number": 6,
+          "title": "风波来了",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第6章-风波来了.md",
+          "wordCount": 5000,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-7",
+          "number": 7,
+          "title": "出走的决定",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第7章-出走的决定.md",
+          "wordCount": 4800,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-8",
+          "number": 8,
+          "title": "外面的世界",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第8章-外面的世界.md",
+          "wordCount": 4500,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-9",
+          "number": 9,
+          "title": "归来的决定",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第9章-归来的决定.md",
+          "wordCount": 4200,
+          "status": "COMPLETED"
+        },
+        {
+          "id": "chapter-10",
+          "number": 10,
+          "title": "传承的开始",
+          "path": "projects/web/novel-writing/drafts/六堡风云-第10章-传承的开始.md",
+          "wordCount": 4800,
+          "status": "COMPLETED"
+        }
+      ],
+      "tags": ["小说", "六堡茶", "传承", "喜剧", "成长"],
+      "stats": {
+        "views": 15,
+        "exports": 5,
+        "lastAccessed": "2025-12-28"
+      },
+      "settings": {
+        "exportFormats": ["markdown", "epub", "pdf", "docx"],
+        "coverImage": null,
+        "cssStyle": null
+      }
+    },
+    {
+      "id": "script-liupucha-ep01",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第1集",
+      "description": "短剧第1集：命运的安排",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 1,
+        "title": "命运的安排",
+        "duration": 5,
+        "scenes": 5,
+        "characters": ["陈阿三", "刘师傅", "王胖子", "眼镜叔"],
+        "correspondingChapter": "第1章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第1集-命运的安排.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 12,
+        "exports": 3,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep02",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第2集",
+      "description": "短剧第2集：学艺的日子",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 2,
+        "title": "学艺的日子",
+        "duration": 5,
+        "scenes": 6,
+        "characters": ["陈阿三", "刘师傅", "王胖子", "李小花"],
+        "correspondingChapter": "第2章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第2集-学艺的日子.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 10,
+        "exports": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep03",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第3集",
+      "description": "短剧第3集：渥堆初体验",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 3,
+        "title": "渥堆初体验",
+        "duration": 5,
+        "scenes": 5,
+        "characters": ["陈阿三", "刘师傅"],
+        "correspondingChapter": "第3章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第3集-渥堆初体验.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 8,
+        "exports": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep04",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第4集",
+      "description": "短剧第4集：陈化的等待",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 4,
+        "title": "陈化的等待",
+        "duration": 5,
+        "scenes": 4,
+        "characters": ["陈阿三", "刘师傅"],
+        "correspondingChapter": "第4章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第4集-陈化的等待.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 7,
+        "exports": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep05",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第5集",
+      "description": "短剧第5集：分歧的开始",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 5,
+        "title": "分歧的开始",
+        "duration": 5,
+        "scenes": 5,
+        "characters": ["陈阿三", "刘师傅", "周经理", "赵厂长"],
+        "correspondingChapter": "第5章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第5集-分歧的开始.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 6,
+        "exports": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep06",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第6集",
+      "description": "短剧第6集：风波来了",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 6,
+        "title": "风波来了",
+        "duration": 5,
+        "scenes": 4,
+        "characters": ["陈阿三", "刘师傅", "王胖子", "赵厂长"],
+        "correspondingChapter": "第6章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第6集-风波来了.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 5,
+        "exports": 1,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep07",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第7集",
+      "description": "短剧第7集：出走的决定",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 7,
+        "title": "出走的决定",
+        "duration": 5,
+        "scenes": 3,
+        "characters": ["陈阿三", "刘师傅", "王胖子"],
+        "correspondingChapter": "第7章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第7集-出走的决定.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 4,
+        "exports": 1,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep08",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第8集",
+      "description": "短剧第8集：外面的世界",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 8,
+        "title": "外面的世界",
+        "duration": 5,
+        "scenes": 4,
+        "characters": ["陈阿三"],
+        "correspondingChapter": "第8章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第8集-外面的世界.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 3,
+        "exports": 1,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep09",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第9集",
+      "description": "短剧第9集：归来的决定",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 9,
+        "title": "归来的决定",
+        "duration": 5,
+        "scenes": 3,
+        "characters": ["陈阿三", "刘师傅"],
+        "correspondingChapter": "第9章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第9集-归来的决定.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 3,
+        "exports": 1,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "script-liupucha-ep10",
+      "type": "SCRIPT",
+      "title": "六堡风云 - 第10集",
+      "description": "短剧第10集：传承的开始",
+      "metadata": {
+        "series": "六堡风云",
+        "episode": 10,
+        "title": "传承的开始",
+        "duration": 5,
+        "scenes": 4,
+        "characters": ["陈阿三", "刘师傅", "李小花"],
+        "correspondingChapter": "第10章",
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/_scripts/drafts/第10集-传承的开始.md",
+      "tags": ["短剧", "剧本", "六堡风云", "喜剧"],
+      "stats": {
+        "views": 3,
+        "exports": 1,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-01",
+      "type": "SKILL",
+      "title": "Skill 1: 需求理解与大纲保存",
+      "description": "收集用户需求，整理成设定文档，保存到 _briefs/",
+      "metadata": {
+        "category": "写作系统",
+        "function": "需求理解",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/01-save-outline.md",
+      "tags": ["写作", "大纲", "需求分析"],
+      "stats": {
+        "views": 10,
+        "usage": 5,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-02",
+      "type": "SKILL",
+      "title": "Skill 2: 信息搜索与知识管理",
+      "description": "涉及新概念时，进行搜索验证并保存到知识库",
+      "metadata": {
+        "category": "写作系统",
+        "function": "知识管理",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/02-research-knowledge.md",
+      "tags": ["写作", "搜索", "知识库"],
+      "stats": {
+        "views": 8,
+        "usage": 3,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-03",
+      "type": "SKILL",
+      "title": "Skill 3: 选题与章节讨论",
+      "description": "提供3-4个情节方案，每个方案包含标题、情节、冲突、人物发展、工作量、优劣势",
+      "metadata": {
+        "category": "写作系统",
+        "function": "章节讨论",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/03-discuss-chapter.md",
+      "tags": ["写作", "章节", "讨论"],
+      "stats": {
+        "views": 10,
+        "usage": 8,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-04",
+      "type": "SKILL",
+      "title": "Skill 4: 创作协作文档",
+      "description": "创建协作文档，明确分工（AI负责/用户负责），等待用户完成",
+      "metadata": {
+        "category": "写作系统",
+        "function": "协作管理",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/04-create-collab-doc.md",
+      "tags": ["写作", "协作", "文档"],
+      "stats": {
+        "views": 5,
+        "usage": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-05",
+      "type": "SKILL",
+      "title": "Skill 5: 学习作者风格",
+      "description": "读取风格指南和历史作品，提取风格特征",
+      "metadata": {
+        "category": "写作系统",
+        "function": "风格学习",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/05-learn-style.md",
+      "tags": ["写作", "风格", "学习"],
+      "stats": {
+        "views": 6,
+        "usage": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-06",
+      "type": "SKILL",
+      "title": "Skill 6: 使用个人素材库",
+      "description": "从素材库搜索真实经历、观点、金句，用于降AI味",
+      "metadata": {
+        "category": "写作系统",
+        "function": "素材使用",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/06-use-personal-materials.md",
+      "tags": ["写作", "素材", "AI降味"],
+      "stats": {
+        "views": 12,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-07",
+      "type": "SKILL",
+      "title": "Skill 7: 创作章节初稿",
+      "description": "基于讨论确认的方案创作章节，保持故事驱动+人物成长调性",
+      "metadata": {
+        "category": "写作系统",
+        "function": "章节写作",
+        "dependsOn": ["skill-03", "skill-06"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/07-write-draft.md",
+      "tags": ["写作", "章节", "初稿"],
+      "stats": {
+        "views": 10,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-08",
+      "type": "SKILL",
+      "title": "Skill 8: 三遍审校（降AI味）",
+      "description": "第一遍内容审校，第二遍风格审校，第三遍细节打磨",
+      "metadata": {
+        "category": "写作系统",
+        "function": "审校",
+        "dependsOn": ["skill-07"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-26",
+        "updatedAt": "2025-12-26"
+      },
+      "path": "projects/web/novel-writing/skills/08-three-pass-review.md",
+      "tags": ["写作", "审校", "AI降味"],
+      "stats": {
+        "views": 10,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-10",
+      "type": "SKILL",
+      "title": "Skill 10: 小说分析",
+      "description": "深度分析小说，提取关键信息（人物、情节、冲突、主题）",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "小说分析",
+        "dependsOn": [],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/10-analyze-novel.md",
+      "tags": ["剧本", "分析", "改编"],
+      "stats": {
+        "views": 8,
+        "usage": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-11",
+      "type": "SKILL",
+      "title": "Skill 11: 结构分析",
+      "description": "规划短剧的集数结构，将小说章节映射到短剧集数",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "结构规划",
+        "dependsOn": ["skill-10"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/11-structure-analysis.md",
+      "tags": ["剧本", "结构", "改编"],
+      "stats": {
+        "views": 7,
+        "usage": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-12",
+      "type": "SKILL",
+      "title": "Skill 12: 人物改编",
+      "description": "将小说人物改编为剧本人物，包括外貌、性格、台词风格",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "人物改编",
+        "dependsOn": ["skill-11"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/12-character-adaptation.md",
+      "tags": ["剧本", "人物", "改编"],
+      "stats": {
+        "views": 6,
+        "usage": 2,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-13",
+      "type": "SKILL",
+      "title": "Skill 13: 场景大纲",
+      "description": "为每集设计详细的场景大纲，包括场景、人物、对白、动作",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "场景大纲",
+        "dependsOn": ["skill-12"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/13-scene-outline.md",
+      "tags": ["剧本", "场景", "大纲"],
+      "stats": {
+        "views": 6,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-14",
+      "type": "SKILL",
+      "title": "Skill 14: 剧本创作",
+      "description": "根据场景大纲，创作完整剧本，包括场景描述、人物对白、动作",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "剧本创作",
+        "dependsOn": ["skill-13"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/14-write-script.md",
+      "tags": ["剧本", "创作", "编剧"],
+      "stats": {
+        "views": 5,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    },
+    {
+      "id": "skill-15",
+      "type": "SKILL",
+      "title": "Skill 15: 剧本审校",
+      "description": "审校剧本，确保符合短剧拍摄要求（时长、场景、对白）",
+      "metadata": {
+        "category": "剧本改编",
+        "function": "剧本审校",
+        "dependsOn": ["skill-14"],
+        "status": "COMPLETED",
+        "createdAt": "2025-12-27",
+        "updatedAt": "2025-12-27"
+      },
+      "path": "projects/web/novel-writing/script-skills/15-script-review.md",
+      "tags": ["剧本", "审校", "拍摄"],
+      "stats": {
+        "views": 5,
+        "usage": 10,
+        "lastAccessed": "2025-12-27"
+      }
+    }
+  ],
+  "statistics": {
+    "totalResources": 25,
+    "byType": {
+      "NOVEL": 1,
+      "SCRIPT": 10,
+      "SKILL": 14
+    },
+    "byStatus": {
+      "COMPLETED": 25
+    },
+    "content": {
+      "totalWords": 50000,
+      "totalChapters": 10,
+      "totalEpisodes": 10,
+      "totalDuration": 50,
+      "totalSkills": 14
+    },
+    "storage": {
+      "totalFiles": 25,
+      "totalSize": 500000
+    }
+  }
+}

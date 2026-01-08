@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # Nginx 反向代理
+  nginx:
+    image: nginx:1.25-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/ssl:/etc/nginx/ssl
+      - ./admin/build:/var/www/html/admin
+      - ./web/build:/var/www/html/web
+      - ./screen:/var/www/html/screen
+    depends_on:
+      - api
+    restart: always
+    networks:
+      - liupao-network
+
+  # API 服务
+  api:
+    build:
+      context: ./docker
+      dockerfile: Dockerfile.server
+    expose:
+      - "3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=${JWT_SECRET}
+    depends_on:
+      - mysql
+      - redis
+    restart: always
+    networks:
+      - liupao-network
+
+  # 数据库
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=${DB_NAME}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+    ports:
+      - "3306:3306"
+    restart: always
+    networks:
+      - liupao-network
+
+  # 缓存
+  redis:
+    image: redis:7-alpine
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - liupao-network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  liupao-network:
+    driver: bridge

@@ -1,0 +1,229 @@
+{
+  "workflow_id": "episode-outline",
+  "workflow_name": "分集大纲",
+  "workflow_description": "规划每集的时长、场景数、核心事件",
+  "workflow_icon": "📺",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "story_outline_path",
+        "description": "输入故事大纲文档路径",
+        "input_form": {
+          "type": "text",
+          "label": "请输入故事大纲文档的路径",
+          "placeholder": "例如：drafts/短剧名-故事大纲.md",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "read_story_outline",
+      "node_type": "llm",
+      "node_name": "读取故事大纲",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "读取并分析故事大纲文档。
+
+故事大纲：{{story_outline_path}}
+
+请提取以下信息：
+1. 起承转合结构
+2. 关键转折点
+3. 情感曲线
+4. 伏笔与呼应
+
+以 JSON 格式输出：
+{
+  \"起承转合\": \"\",
+  \"关键转折点\": [],
+  \"情感曲线\": \"\",
+  \"伏笔与呼应\": \"\"
+}",
+        "output_type": "json",
+        "output_key": "story_info"
+      }
+    },
+    {
+      "node_id": "design_episode_overview",
+      "node_type": "llm",
+      "node_name": "规划分集概览",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据故事大纲，规划分集概览。
+
+起承转合：{{story_info.起承转合}}
+
+请规划分集概览：
+- 起（第 1-10 集）：人物出场、关系建立
+- 承（第 11-50 集）：感情发展、甜蜜升温
+- 转（第 51-70 集）：误会产生、关系破裂
+- 合（第 71-80 集）：和好如初、完美收尾
+
+以表格格式输出：
+| 阶段 | 集数 | 核心内容 | 集数占比 |
+|------|------|---------|---------|
+| 起 | 第 1-10 集 | 人物出场、关系建立 | 12.5% |
+| 承 | 第 11-50 集 | 感情发展、甜蜜升温 | 50% |
+| 转 | 第 51-70 集 | 误会产生、关系破裂 | 25% |
+| 合 | 第 71-80 集 | 和好如初、完美收尾 | 12.5% |",
+        "output_type": "text",
+        "output_key": "episode_overview"
+      }
+    },
+    {
+      "node_id": "design_key_episodes",
+      "node_type": "llm",
+      "node_name": "设计关键集数",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据关键转折点，设计关键集数的详细内容。
+
+关键转折点：{{story_info.关键转折点}}
+
+请设计以下关键集数：
+1. 第 1 集：命运的相遇
+2. 第 20 集：第一次心动
+3. 第 50 集：表白
+4. 第 60 集：关系破裂
+5. 第 80 集：终成眷属
+
+每集包含：
+- 时长
+- 场景数
+- 核心事件
+- 关键对白
+- 情感线
+- 伏笔/呼应
+- 场景列表
+- 核心情节点
+- 金句/名场面
+
+以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "key_episodes"
+      }
+    },
+    {
+      "node_id": "design_all_episodes",
+      "node_type": "llm",
+      "node_name": "设计所有集数",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据起承转合结构，设计所有 80 集的概览。
+
+起承转合：{{story_info.起承转合}}
+关键转折点：{{story_info.关键转折点}}
+
+请设计所有 80 集的概览表：
+| 集数 | 标题 | 核心内容 |
+|------|------|---------|
+| 第 1 集 | 命运的相遇 | 林小满在电梯里撞到苏瑶 |
+| 第 2 集 | 新官上任 | 苏瑶正式上任 |
+| ... | ... | ... |
+| 第 80 集 | 终成眷属 | 有情人终成眷属 |
+
+以 JSON 格式输出：
+{
+  \"所有集数\": []
+}",
+        "output_type": "json",
+        "output_key": "all_episodes"
+      }
+    },
+    {
+      "node_id": "generate_episode_doc",
+      "node_type": "llm",
+      "node_name": "生成分集大纲文档",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成分集大纲文档。
+
+分集概览：{{episode_overview}}
+关键集数：{{key_episodes}}
+所有集数：{{all_episodes}}
+
+请生成分集大纲文档，包含：
+1. 分集概览
+2. 起（第 1-10 集）详细内容
+3. 承（第 11-50 集）关键集数
+4. 转（第 51-70 集）关键集数
+5. 合（第 71-80 集）关键集数
+6. 关键集数详情
+
+以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "episode_doc"
+      }
+    },
+    {
+      "node_id": "output_episode_doc",
+      "node_type": "end",
+      "node_name": "输出分集大纲文档",
+      "position": {
+        "x": 900,
+        "y": 200
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_episode_doc",
+        "description": "输出完整的分集大纲文档",
+        "output_form": {
+          "type": "text",
+          "label": "分集大纲文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "read_story_outline"},
+    {"source": "read_story_outline", "target": "design_episode_overview"},
+    {"source": "read_story_outline", "target": "design_key_episodes"},
+    {"source": "read_story_outline", "target": "design_all_episodes"},
+    {"source": "design_episode_overview", "target": "generate_episode_doc"},
+    {"source": "design_key_episodes", "target": "generate_episode_doc"},
+    {"source": "design_all_episodes", "target": "generate_episode_doc"},
+    {"source": "generate_episode_doc", "target": "output_episode_doc"}
+  ],
+  "workflow_variables": {
+    "story_outline_path": {"type": "string", "description": "故事大纲文档路径"},
+    "story_info": {"type": "object", "description": "故事大纲信息"},
+    "episode_overview": {"type": "string", "description": "分集概览"},
+    "key_episodes": {"type": "object", "description": "关键集数"},
+    "all_episodes": {"type": "object", "description": "所有集数"},
+    "episode_doc": {"type": "string", "description": "分集大纲文档"},
+    "final_episode_doc": {"type": "string", "description": "最终输出的分集大纲文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

@@ -1,0 +1,144 @@
+{
+  "workflow_id": "write-script",
+  "workflow_name": "剧本创作",
+  "workflow_description": "撰写完整剧本，包含台词、动作、镜头指示",
+  "workflow_icon": "📝",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "scene_outline_path",
+        "description": "输入场景大纲文档路径",
+        "input_form": {
+          "type": "text",
+          "label": "请输入场景大纲文档的路径",
+          "placeholder": "例如：_scripts/adaptations/第1集-场景大纲.md",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "read_scene_outline",
+      "node_type": "llm",
+      "node_name": "读取场景大纲",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "读取并分析场景大纲文档。\n\n场景大纲：{{scene_outline_path}}\n\n请提取以下信息：\n1. 场景列表\n2. 场景详细信息\n3. 情绪曲线\n4. 重点场景\n\n以 JSON 格式输出：\n{\n  \"场景列表\": [],\n  \"场景详细信息\": [],\n  \"情绪曲线\": \"\",\n  \"重点场景\": []\n}",
+        "output_type": "json",
+        "output_key": "scene_info"
+      }
+    },
+    {
+      "node_id": "create_character_table",
+      "node_type": "llm",
+      "node_name": "创建人物表",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据场景列表中的人物，创建人物表。\n\n场景列表：{{scene_info.场景列表}}\n\n请创建人物表，包含：\n1. 姓名\n2. 年龄\n3. 身份/职业\n4. 性格特点\n\n以表格格式输出。",
+        "output_type": "text",
+        "output_key": "character_table"
+      }
+    },
+    {
+      "node_id": "write_script_content",
+      "node_type": "llm",
+      "node_name": "创作剧本内容",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据场景详细信息，创作完整的剧本内容。\n\n场景详细信息：{{scene_info.场景详细信息}}\n\n请为每个场景创作剧本内容：\n1. 场景标题（S[集数]-[序号] [场景名] - [时间段]）\n2. 人物\n3. 场景描述\n4. 镜头指示\n5. 对白（简洁、口语化）\n6. 动作（具体、推动情节）\n7. 备注（道具、音乐、特效）\n\n剧本格式：\n```\nS[集数]-[序号] [场景名] - [时间段]\n\n**人物**：[人物列表]\n\n**场景描述**：\n[描述]\n\n**镜头**：\n- [镜头描述]\n\n**对白**：\n[对白内容]\n\n**动作**：\n[动作描述]\n\n**备注**：\n- [备注]\n```\n\n以 JSON 格式输出：\n{\n  \"剧本内容\": []\n}",
+        "output_type": "json",
+        "output_key": "script_content"
+      }
+    },
+    {
+      "node_id": "calculate_duration",
+      "node_type": "llm",
+      "node_name": "计算总时长",
+      "position": {
+        "x": 700,
+        "y": 150
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据剧本内容，计算总时长。\n\n剧本内容：{{script_content}}\n\n请计算每个场景的时长，然后计算总时长。\n每个场景的时长通常为 15-45 秒。\n\n以 JSON 格式输出：\n{\n  \"每个场景时长\": [],\n  \"总时长\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "duration"
+      }
+    },
+    {
+      "node_id": "generate_script_doc",
+      "node_type": "llm",
+      "node_name": "生成剧本文档",
+      "position": {
+        "x": 900,
+        "y": 150
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成完整的剧本文档。\n\n人物表：{{character_table}}\n剧本内容：{{script_content}}\n总时长：{{duration}}\n\n请生成完整的剧本文档，包含：\n1. 第 [集数] 集：[标题]\n2. 人物表\n3. 场景列表\n4. 完整剧本内容（每个场景）\n5. 总时长\n6. 备注\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "script_doc"
+      }
+    },
+    {
+      "node_id": "output_script_doc",
+      "node_type": "end",
+      "node_name": "输出剧本文档",
+      "position": {
+        "x": 1100,
+        "y": 150
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_script_doc",
+        "description": "输出完整的剧本文档",
+        "output_form": {
+          "type": "text",
+          "label": "剧本文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "read_scene_outline"},
+    {"source": "read_scene_outline", "target": "create_character_table"},
+    {"source": "read_scene_outline", "target": "write_script_content"},
+    {"source": "create_character_table", "target": "generate_script_doc"},
+    {"source": "write_script_content", "target": "calculate_duration"},
+    {"source": "calculate_duration", "target": "generate_script_doc"},
+    {"source": "generate_script_doc", "target": "output_script_doc"}
+  ],
+  "workflow_variables": {
+    "scene_outline_path": {"type": "string", "description": "场景大纲文档路径"},
+    "scene_info": {"type": "object", "description": "场景大纲信息"},
+    "character_table": {"type": "string", "description": "人物表"},
+    "script_content": {"type": "object", "description": "剧本内容"},
+    "duration": {"type": "object", "description": "时长信息"},
+    "script_doc": {"type": "string", "description": "剧本文档"},
+    "final_script_doc": {"type": "string", "description": "最终输出的剧本文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

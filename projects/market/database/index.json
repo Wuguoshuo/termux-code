@@ -1,0 +1,220 @@
+{
+  "version": "1.0.0",
+  "index": {
+    "novel-liupucha": {
+      "type": "NOVEL",
+      "path": "projects/web/novel-writing",
+      "files": {
+        "brief": "_briefs/六堡风云-设定brief.md",
+        "chapters": [
+          "drafts/六堡风云-第1章-命运的安排.md",
+          "drafts/六堡风云-第2章-学艺的日子.md",
+          "drafts/六堡风云-第3章-渥堆初体验.md",
+          "drafts/六堡风云-第4章-陈化的等待.md",
+          "drafts/六堡风云-第5章-分歧的开始.md",
+          "drafts/六堡风云-第6章-风波来了.md",
+          "drafts/六堡风云-第7章-出走的决定.md",
+          "drafts/六堡风云-第8章-外面的世界.md",
+          "drafts/六堡风云-第9章-归来的决定.md",
+          "drafts/六堡风云-第10章-传承的开始.md"
+        ],
+        "logs": [
+          "_logs/第1章-审校报告.md",
+          "_logs/第2章-审校报告.md",
+          "_logs/第3章-审校报告.md",
+          "_logs/第4章-审校报告.md",
+          "_logs/第5章-审校报告.md",
+          "_logs/第6章-审校报告.md",
+          "_logs/第7章-审校报告.md",
+          "_logs/第8章-审校报告.md",
+          "_logs/第9章-审校报告.md",
+          "_logs/第10章-审校报告.md"
+        ]
+      },
+      "skills": [
+        "skills/01-save-outline.md",
+        "skills/02-research-knowledge.md",
+        "skills/03-discuss-chapter.md",
+        "skills/04-create-collab-doc.md",
+        "skills/05-learn-style.md",
+        "skills/06-use-personal-materials.md",
+        "skills/07-write-draft.md",
+        "skills/08-three-pass-review.md"
+      ],
+      "scriptSkills": [
+        "script-skills/10-analyze-novel.md",
+        "script-skills/11-structure-analysis.md",
+        "script-skills/12-character-adaptation.md",
+        "script-skills/13-scene-outline.md",
+        "script-skills/14-write-script.md",
+        "script-skills/15-script-review.md"
+      ],
+      "scriptFiles": [
+        "_scripts/adaptations/小说分析报告.md",
+        "_scripts/adaptations/短剧结构规划.md",
+        "_scripts/adaptations/人物改编方案.md",
+        "_scripts/adaptations/第1集-场景大纲.md"
+      ],
+      "scriptDrafts": [
+        "_scripts/drafts/第1集-命运的安排.md",
+        "_scripts/drafts/第2集-学艺的日子.md",
+        "_scripts/drafts/第3集-渥堆初体验.md",
+        "_scripts/drafts/第4集-陈化的等待.md",
+        "_scripts/drafts/第5集-分歧的开始.md",
+        "_scripts/drafts/第6集-风波来了.md",
+        "_scripts/drafts/第7集-出走的决定.md",
+        "_scripts/drafts/第8集-外面的世界.md",
+        "_scripts/drafts/第9集-归来的决定.md",
+        "_scripts/drafts/第10集-传承的开始.md"
+      ]
+    },
+    "script-liupucha": {
+      "type": "SCRIPT_SERIES",
+      "path": "projects/web/novel-writing/_scripts",
+      "files": {
+        "summary": "剧本汇总-完整版.md",
+        "adaptations": [
+          "adaptations/小说分析报告.md",
+          "adaptations/短剧结构规划.md",
+          "adaptations/人物改编方案.md",
+          "adaptations/第1集-场景大纲.md"
+        ],
+        "drafts": [
+          "drafts/第1集-命运的安排.md",
+          "drafts/第2集-学艺的日子.md",
+          "drafts/第3集-渥堆初体验.md",
+          "drafts/第4集-陈化的等待.md",
+          "drafts/第5集-分歧的开始.md",
+          "drafts/第6集-风波来了.md",
+          "drafts/第7集-出走的决定.md",
+          "drafts/第8集-外面的世界.md",
+          "drafts/第9集-归来的决定.md",
+          "drafts/第10集-传承的开始.md"
+        ],
+        "logs": [
+          "_logs/剧本改编日志.md"
+        ]
+      }
+    },
+    "writing-skills": {
+      "type": "SKILLS_COLLECTION",
+      "path": "projects/web/novel-writing/skills",
+      "skills": [
+        {
+          "id": "skill-01",
+          "name": "需求理解与大纲保存",
+          "file": "01-save-outline.md"
+        },
+        {
+          "id": "skill-02",
+          "name": "信息搜索与知识管理",
+          "file": "02-research-knowledge.md"
+        },
+        {
+          "id": "skill-03",
+          "name": "选题与章节讨论",
+          "file": "03-discuss-chapter.md"
+        },
+        {
+          "id": "skill-04",
+          "name": "创作协作文档",
+          "file": "04-create-collab-doc.md"
+        },
+        {
+          "id": "skill-05",
+          "name": "学习作者风格",
+          "file": "05-learn-style.md"
+        },
+        {
+          "id": "skill-06",
+          "name": "使用个人素材库",
+          "file": "06-use-personal-materials.md"
+        },
+        {
+          "id": "skill-07",
+          "name": "创作章节初稿",
+          "file": "07-write-draft.md"
+        },
+        {
+          "id": "skill-08",
+          "name": "三遍审校（降AI味）",
+          "file": "08-three-pass-review.md"
+        }
+      ]
+    },
+    "script-skills": {
+      "type": "SKILLS_COLLECTION",
+      "path": "projects/web/novel-writing/script-skills",
+      "skills": [
+        {
+          "id": "skill-10",
+          "name": "小说分析",
+          "file": "10-analyze-novel.md"
+        },
+        {
+          "id": "skill-11",
+          "name": "结构分析",
+          "file": "11-structure-analysis.md"
+        },
+        {
+          "id": "skill-12",
+          "name": "人物改编",
+          "file": "12-character-adaptation.md"
+        },
+        {
+          "id": "skill-13",
+          "name": "场景大纲",
+          "file": "13-scene-outline.md"
+        },
+        {
+          "id": "skill-14",
+          "name": "剧本创作",
+          "file": "14-write-script.md"
+        },
+        {
+          "id": "skill-15",
+          "name": "剧本审校",
+          "file": "15-script-review.md"
+        }
+      ]
+    },
+    "materials": {
+      "type": "MATERIALS",
+      "path": "projects/web/novel-writing/materials",
+      "files": {
+        "guide": "素材库使用指南.md",
+        "raw": "原始素材/",
+        "experiences": "经历索引/",
+        "views": "观点索引/",
+        "quotes": "金句库/"
+      }
+    }
+  },
+  "tags": {
+    "小说": ["novel-liupucha"],
+    "剧本": ["script-liupucha", "novel-liupucha"],
+    "写作": ["writing-skills", "novel-liupucha"],
+    "改编": ["script-skills", "script-liupucha"],
+    "六堡茶": ["novel-liupucha", "script-liupucha"],
+    "喜剧": ["novel-liupucha", "script-liupucha"],
+    "传承": ["novel-liupucha", "script-liupucha"],
+    "Skills": ["writing-skills", "script-skills"],
+    "素材": ["materials"]
+  },
+  "relationships": {
+    "novel-liupucha": {
+      "hasScripts": "script-liupucha",
+      "hasSkills": ["writing-skills", "script-skills"],
+      "hasMaterials": "materials"
+    },
+    "script-liupucha": {
+      "basedOnNovel": "novel-liupucha"
+    },
+    "writing-skills": {
+      "usedBy": ["novel-liupucha"]
+    },
+    "script-skills": {
+      "usedBy": ["script-liupucha"]
+    }
+  }
+}

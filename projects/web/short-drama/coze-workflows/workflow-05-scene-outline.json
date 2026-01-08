@@ -1,0 +1,162 @@
+{
+  "workflow_id": "scene-outline",
+  "workflow_name": "场景大纲",
+  "workflow_description": "为每集设计详细场景，包含情绪曲线",
+  "workflow_icon": "🎬",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "episode_info",
+        "description": "输入要创作的集数信息",
+        "input_form": {
+          "type": "text",
+          "label": "请输入集数编号和核心事件（用逗号分隔）",
+          "placeholder": "例如：1, 命运的相遇, 林小满在电梯里撞到苏瑶",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "parse_episode_info",
+      "node_type": "llm",
+      "node_name": "解析集数信息",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "解析输入的集数信息。\n\n输入：{{episode_info}}\n\n请以 JSON 格式输出：\n{\n  \"集数\": \"\",\n  \"标题\": \"\",\n  \"核心事件\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "parsed_info"
+      }
+    },
+    {
+      "node_id": "design_scene_list",
+      "node_type": "llm",
+      "node_name": "设计场景列表",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据集数信息，设计场景列表。\n\n集数：{{parsed_info.集数}}\n标题：{{parsed_info.标题}}\n核心事件：{{parsed_info.核心事件}}\n\n请设计 5-8 个场景：\n1. 场景编号（S[集数]-[序号]）\n2. 场景名称\n3. 时间段（日/夜/晨/黄昏）\n4. 人物\n5. 核心事件\n6. 情绪\n7. 时长\n\n以表格格式输出。",
+        "output_type": "text",
+        "output_key": "scene_list"
+      }
+    },
+    {
+      "node_id": "design_scene_details",
+      "node_type": "llm",
+      "node_name": "设计场景详细信息",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据场景列表，设计每个场景的详细信息。\n\n集数：{{parsed_info.集数}}\n场景列表：{{scene_list}}\n\n请为每个场景设计详细信息：\n1. 场景编号\n2. 场景名称\n3. 时间段\n4. 人物\n5. 场景描述（15-30 字）\n6. 镜头指示（全景→中景→特写）\n7. 核心事件\n8. 对白要点\n9. 动作要点\n10. 情绪\n11. 时长\n12. 备注\n\n以 JSON 格式输出：\n{\n  \"场景详细信息\": []\n}",
+        "output_type": "json",
+        "output_key": "scene_details"
+      }
+    },
+    {
+      "node_id": "design_emotion_curve",
+      "node_type": "llm",
+      "node_name": "设计情绪曲线",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据场景列表，设计情绪曲线。\n\n场景列表：{{scene_list}}\n\n请设计情绪曲线：\n1. 每个场景的情绪\n2. 情绪强度（1-5）\n3. 情绪变化（↑/↓/→）\n\n以表格格式输出，并绘制情绪曲线图：\n\n情绪强度\n5 ★★★★★\n4 ★★★★\n3 ★★★\n2 ★★\n1 ★\n  └───┬───┬───┬───┬───\n     场景1 场景2 场景3 ...",
+        "output_type": "text",
+        "output_key": "emotion_curve"
+      }
+    },
+    {
+      "node_id": "design_key_scenes",
+      "node_type": "llm",
+      "node_name": "设计重点场景",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据场景列表和场景详细信息，设计重点场景的详细内容。\n\n场景列表：{{scene_list}}\n场景详细信息：{{scene_details}}\n\n请选择 2-3 个重点场景，设计详细内容：\n1. 场景目的\n2. 镜头语言\n3. 情感表达\n4. 时长\n\n以 JSON 格式输出：\n{\n  \"重点场景\": []\n}",
+        "output_type": "json",
+        "output_key": "key_scenes"
+      }
+    },
+    {
+      "node_id": "generate_scene_doc",
+      "node_type": "llm",
+      "node_name": "生成场景大纲文档",
+      "position": {
+        "x": 900,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成完整的场景大纲文档。\n\n集数信息：{{parsed_info}}\n场景列表：{{scene_list}}\n场景详细信息：{{scene_details}}\n情绪曲线：{{emotion_curve}}\n重点场景：{{key_scenes}}\n\n请生成完整的场景大纲文档，包含：\n1. 场景列表\n2. 场景详细信息\n3. 情绪曲线\n4. 关键场景详述\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "scene_doc"
+      }
+    },
+    {
+      "node_id": "output_scene_doc",
+      "node_type": "end",
+      "node_name": "输出场景大纲文档",
+      "position": {
+        "x": 1100,
+        "y": 200
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_scene_doc",
+        "description": "输出完整的场景大纲文档",
+        "output_form": {
+          "type": "text",
+          "label": "场景大纲文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "parse_episode_info"},
+    {"source": "parse_episode_info", "target": "design_scene_list"},
+    {"source": "parse_episode_info", "target": "design_scene_details"},
+    {"source": "parse_episode_info", "target": "design_emotion_curve"},
+    {"source": "design_scene_list", "target": "design_key_scenes"},
+    {"source": "design_scene_details", "target": "design_key_scenes"},
+    {"source": "design_emotion_curve", "target": "generate_scene_doc"},
+    {"source": "design_key_scenes", "target": "generate_scene_doc"},
+    {"source": "generate_scene_doc", "target": "output_scene_doc"}
+  ],
+  "workflow_variables": {
+    "episode_info": {"type": "string", "description": "集数信息"},
+    "parsed_info": {"type": "object", "description": "解析后的集数信息"},
+    "scene_list": {"type": "string", "description": "场景列表"},
+    "scene_details": {"type": "object", "description": "场景详细信息"},
+    "emotion_curve": {"type": "string", "description": "情绪曲线"},
+    "key_scenes": {"type": "object", "description": "重点场景"},
+    "scene_doc": {"type": "string", "description": "场景大纲文档"},
+    "final_scene_doc": {"type": "string", "description": "最终输出的场景大纲文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

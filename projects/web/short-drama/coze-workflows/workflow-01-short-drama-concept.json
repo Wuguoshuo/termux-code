@@ -1,0 +1,165 @@
+{
+  "workflow_id": "short-drama-concept",
+  "workflow_name": "短剧选题",
+  "workflow_description": "确定题材、类型、核心冲突、目标受众",
+  "workflow_icon": "🎬",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "user_input",
+        "description": "输入用户的基本想法",
+        "input_form": {
+          "type": "text",
+          "label": "请描述你想要创作的短剧类型和想法",
+          "placeholder": "例如：我想写一个甜宠短剧，主角是霸道总裁和普通女孩",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "extract_requirements",
+      "node_type": "llm",
+      "node_name": "提取需求",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "从用户输入中提取以下信息：\n1. 题材偏好（甜宠、虐恋、悬疑、职场、家庭等）\n2. 风格偏好（轻松幽默、严肃深刻、浪漫唯美等）\n3. 核心概念（一句话概括故事）\n4. 目标受众（年龄、性别、兴趣）\n\n用户输入：{{user_input}}\n\n请以 JSON 格式输出：\n{\n  \"题材类型\": \"\",\n  \"风格基调\": \"\",\n  \"核心概念\": \"\",\n  \"目标受众\": \"\",\n  \"初步想法\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "requirements"
+      }
+    },
+    {
+      "node_id": "confirm_genre",
+      "node_type": "question",
+      "node_name": "确认题材",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "question_type": "single",
+        "question_text": "根据您的输入，我理解您想要创作一个{{题材类型}}类型的短剧。请问是否正确？",
+        "options": [
+          {"label": "正确，继续", "value": "correct"},
+          {"label": "需要调整", "value": "adjust"}
+        ],
+        "output_type": "choice",
+        "output_key": "genre_confirm"
+      }
+    },
+    {
+      "node_id": "adjust_genre",
+      "node_type": "llm",
+      "node_name": "调整题材",
+      "position": {
+        "x": 700,
+        "y": 50
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "用户想要调整题材。请提供更详细的题材类型和风格偏好。\n\n用户输入：{{user_input}}\n\n请输出用户想要的准确题材类型和风格偏好，以 JSON 格式：\n{\n  \"调整后的题材类型\": \"\",\n  \"调整后的风格基调\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "adjusted_genre"
+      }
+    },
+    {
+      "node_id": "design_conflict",
+      "node_type": "llm",
+      "node_name": "设计核心冲突",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据题材类型和风格，为这个短剧设计核心冲突。\n\n题材类型：{{requirements.题材类型}}\n风格基调：{{requirements.风格基调}}\n\n请设计：\n1. 主要冲突（身份差距、误会纠葛、家族阻挠等）\n2. 次要冲突（职场竞争、前任纠缠等）\n3. 冲突焦点（爱情与面包的选择等）\n\n以 JSON 格式输出：\n{\n  \"主要冲突\": \"\",\n  \"次要冲突\": [],\n  \"冲突焦点\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "conflict"
+      }
+    },
+    {
+      "node_id": "define_audience",
+      "node_type": "llm",
+      "node_name": "确定受众",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据题材类型和风格，确定目标受众。\n\n题材类型：{{requirements.题材类型}}\n风格基调：{{requirements.风格基调}}\n\n请分析：\n1. 年龄段\n2. 性别\n3. 兴趣标签\n4. 观看场景\n\n以 JSON 格式输出：\n{\n  \"年龄段\": \"\",\n  \"性别\": \"\",\n  \"兴趣标签\": [],\n  \"观看场景\": []\n}",
+        "output_type": "json",
+        "output_key": "audience"
+      }
+    },
+    {
+      "node_id": "generate_brief",
+      "node_type": "llm",
+      "node_name": "生成设定文档",
+      "position": {
+        "x": 700,
+        "y": 250
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成完整的设定文档。\n\n题材类型：{{requirements.题材类型}}\n风格基调：{{requirements.风格基调}}\n核心冲突：{{conflict}}\n目标受众：{{audience}}\n\n请生成完整的设定文档，包含：\n1. 基本信息\n2. 题材类型\n3. 核心冲突\n4. 目标受众\n5. 世界观设定（时间背景、地点环境、世界规则）\n6. 核心设定（核心概念、主线剧情、情感基调）\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "brief"
+      }
+    },
+    {
+      "node_id": "output_brief",
+      "node_type": "end",
+      "node_name": "输出设定文档",
+      "position": {
+        "x": 900,
+        "y": 250
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_brief",
+        "description": "输出完整的设定文档",
+        "output_form": {
+          "type": "text",
+          "label": "设定文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "extract_requirements"},
+    {"source": "extract_requirements", "target": "confirm_genre"},
+    {"source": "confirm_genre", "target": "design_conflict", "condition": "genre_confirm == 'correct'"},
+    {"source": "confirm_genre", "target": "adjust_genre", "condition": "genre_confirm == 'adjust'"},
+    {"source": "adjust_genre", "target": "design_conflict"},
+    {"source": "design_conflict", "target": "define_audience"},
+    {"source": "define_audience", "target": "generate_brief"},
+    {"source": "generate_brief", "target": "output_brief"}
+  ],
+  "workflow_variables": {
+    "user_input": {"type": "string", "description": "用户输入的基本想法"},
+    "requirements": {"type": "object", "description": "提取的需求信息"},
+    "genre_confirm": {"type": "string", "description": "题材确认结果"},
+    "adjusted_genre": {"type": "object", "description": "调整后的题材类型"},
+    "conflict": {"type": "object", "description": "核心冲突设计"},
+    "audience": {"type": "object", "description": "目标受众分析"},
+    "brief": {"type": "string", "description": "生成的设定文档"},
+    "final_brief": {"type": "string", "description": "最终输出的设定文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

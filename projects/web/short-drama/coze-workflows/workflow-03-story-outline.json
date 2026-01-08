@@ -1,0 +1,162 @@
+{
+  "workflow_id": "story-outline",
+  "workflow_name": "故事大纲",
+  "workflow_description": "设计主线剧情、起承转合、关键转折点",
+  "workflow_icon": "📖",
+  "workflow_category": "创作",
+  "nodes": [
+    {
+      "node_id": "start",
+      "node_type": "start",
+      "node_name": "开始",
+      "position": {
+        "x": 100,
+        "y": 100
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "brief_path",
+        "description": "输入设定文档和角色设定文档路径",
+        "input_form": {
+          "type": "text",
+          "label": "请输入设定文档和角色设定文档的路径（用逗号分隔）",
+          "placeholder": "例如：_briefs/短剧名-设定brief.md, _briefs/短剧名-角色设定.md",
+          "required": true
+        }
+      }
+    },
+    {
+      "node_id": "read_docs",
+      "node_type": "llm",
+      "node_name": "读取文档",
+      "position": {
+        "x": 300,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "读取并分析设定文档和角色设定文档。\n\n文档路径：{{brief_path}}\n\n请提取以下信息：\n1. 题材类型\n2. 核心冲突\n3. 世界观设定\n4. 人物关系\n\n以 JSON 格式输出：\n{\n  \"题材类型\": \"\",\n  \"核心冲突\": \"\",\n  \"世界观设定\": \"\",\n  \"人物关系\": \"\"\n}",
+        "output_type": "json",
+        "output_key": "docs_info"
+      }
+    },
+    {
+      "node_id": "design_main_plot",
+      "node_type": "llm",
+      "node_name": "设计主线剧情",
+      "position": {
+        "x": 500,
+        "y": 100
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据文档信息，设计主线剧情。\n\n题材类型：{{docs_info.题材类型}}\n核心冲突：{{docs_info.核心冲突}}\n人物关系：{{docs_info.人物关系}}\n\n请设计主线剧情，包含：\n1. 初始状态（主角的日常生活）\n2. 激励事件（打破平衡的事件）\n3. 上升动作（冲突升级的过程，分 3 个阶段）\n4. 高潮（最大冲突的时刻）\n5. 结局（故事最终状态）\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "main_plot"
+      }
+    },
+    {
+      "node_id": "design_structure",
+      "node_type": "llm",
+      "node_name": "设计起承转合",
+      "position": {
+        "x": 500,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据主线剧情，设计起承转合结构。\n\n主线剧情：{{main_plot}}\n\n请设计起承转合结构：\n1. 起（第 1-10 集）：冤家路窄，互相看不顺眼\n2. 承（第 11-50 集）：暧昧升温，产生好感\n3. 转（第 51-70 集）：误会产生，关系破裂\n4. 合（第 71-80 集）：和好如初，在一起\n\n每个阶段包含：\n- 核心内容\n- 目标\n- 关键情节点\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "structure"
+      }
+    },
+    {
+      "node_id": "design_turning_points",
+      "node_type": "llm",
+      "node_name": "设计关键转折点",
+      "position": {
+        "x": 500,
+        "y": 300
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据起承转合结构，设计 5 个关键转折点。\n\n起承转合：{{structure}}\n\n请设计 5 个关键转折点：\n1. 第 5 集：被迫成为助理\n2. 第 20 集：第一次心动\n3. 第 40 集：发现另一面\n4. 第 60 集：误会\n5. 第 75 集：挽回\n\n每个转折点包含：\n- 集数\n- 标题\n- 描述\n- 影响\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "turning_points"
+      }
+    },
+    {
+      "node_id": "design_emotion_curve",
+      "node_type": "llm",
+      "node_name": "设计情感曲线",
+      "position": {
+        "x": 700,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据起承转合结构，设计情感曲线。\n\n起承转合：{{structure}}\n\n请设计情感曲线：\n- 初始（第 1-5 集）：互相看不顺眼\n- 升温（第 6-20 集）：冤家变朋友\n- 暧昧（第 21-50 集）：暧昧升温\n- 误会（第 51-70 集）：关系破裂\n- 和好（第 71-80 集）：在一起\n\n每个阶段包含：\n- 集数范围\n- 情感状态\n- 甜蜜度（1-5 星）\n- 虐心度（1-5 星）\n\n以 JSON 格式输出。",
+        "output_type": "json",
+        "output_key": "emotion_curve"
+      }
+    },
+    {
+      "node_id": "generate_story_doc",
+      "node_type": "llm",
+      "node_name": "生成故事大纲文档",
+      "position": {
+        "x": 900,
+        "y": 200
+      },
+      "config": {
+        "model": "minimax-m2.1",
+        "prompt": "根据以上信息，生成完整的故事大纲文档。\n\n主线剧情：{{main_plot}}\n起承转合：{{structure}}\n关键转折点：{{turning_points}}\n情感曲线：{{emotion_curve}}\n\n请生成完整的故事大纲文档，包含：\n1. 主线剧情\n2. 起承转合\n3. 关键转折点\n4. 情感曲线\n5. 伏笔与呼应\n\n以 Markdown 格式输出。",
+        "output_type": "text",
+        "output_key": "story_doc"
+      }
+    },
+    {
+      "node_id": "output_story_doc",
+      "node_type": "end",
+      "node_name": "输出故事大纲文档",
+      "position": {
+        "x": 1100,
+        "y": 200
+      },
+      "config": {
+        "output_type": "text",
+        "output_key": "final_story_doc",
+        "description": "输出完整的故事大纲文档",
+        "output_form": {
+          "type": "text",
+          "label": "故事大纲文档",
+          "readonly": true
+        }
+      }
+    }
+  ],
+  "edges": [
+    {"source": "start", "target": "read_docs"},
+    {"source": "read_docs", "target": "design_main_plot"},
+    {"source": "read_docs", "target": "design_structure"},
+    {"source": "read_docs", "target": "design_turning_points"},
+    {"source": "design_main_plot", "target": "design_emotion_curve"},
+    {"source": "design_structure", "target": "design_emotion_curve"},
+    {"source": "design_turning_points", "target": "generate_story_doc"},
+    {"source": "design_emotion_curve", "target": "generate_story_doc"},
+    {"source": "generate_story_doc", "target": "output_story_doc"}
+  ],
+  "workflow_variables": {
+    "brief_path": {"type": "string", "description": "文档路径"},
+    "docs_info": {"type": "object", "description": "文档信息"},
+    "main_plot": {"type": "object", "description": "主线剧情"},
+    "structure": {"type": "object", "description": "起承转合"},
+    "turning_points": {"type": "object", "description": "关键转折点"},
+    "emotion_curve": {"type": "object", "description": "情感曲线"},
+    "story_doc": {"type": "string", "description": "故事大纲文档"},
+    "final_story_doc": {"type": "string", "description": "最终输出的故事大纲文档"}
+  },
+  "created_at": "2025-12-31",
+  "updated_at": "2025-12-31",
+  "version": "1.0"
+}

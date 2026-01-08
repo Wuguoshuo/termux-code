@@ -1,0 +1,364 @@
+{
+  "product_categories": [
+    {
+      "id": 1,
+      "name": "散茶",
+      "code": "sancha",
+      "sort_order": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "紧压茶",
+      "code": "jinmacha",
+      "sort_order": 2,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "年份茶",
+      "code": "nianfench",
+      "sort_order": 3,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "陈皮普洱",
+      "code": "chenpipu",
+      "sort_order": 4,
+      "status": 1
+    }
+  ],
+  "product_grades": [
+    {
+      "id": 1,
+      "name": "特级",
+      "code": "teji",
+      "sort_order": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "一级",
+      "code": "yiji",
+      "sort_order": 2,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "二级",
+      "code": "erji",
+      "sort_order": 3,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "三级",
+      "code": "sanji",
+      "sort_order": 4,
+      "status": 1
+    }
+  ],
+  "product_origins": [
+    {
+      "id": 1,
+      "name": "梧州",
+      "code": "wuzhou",
+      "region": "梧州产区",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "横州",
+      "code": "hengzhou",
+      "region": "横州产区",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "桂林",
+      "code": "guilin",
+      "region": "桂林产区",
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "柳州",
+      "code": "liuzhou",
+      "region": "柳州产区",
+      "status": 1
+    },
+    {
+      "id": 5,
+      "name": "南宁",
+      "code": "nanning",
+      "region": "南宁产区",
+      "status": 1
+    }
+  ],
+  "product_specs": [
+    {
+      "id": 1,
+      "name": "100g",
+      "unit": "g",
+      "weight": 0.1,
+      "sort_order": 1,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "250g",
+      "unit": "g",
+      "weight": 0.25,
+      "sort_order": 2,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "357g",
+      "unit": "g",
+      "weight": 0.357,
+      "sort_order": 3,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "name": "500g",
+      "unit": "g",
+      "weight": 0.5,
+      "sort_order": 4,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "name": "1kg",
+      "unit": "kg",
+      "weight": 1,
+      "sort_order": 5,
+      "status": 1
+    },
+    {
+      "id": 6,
+      "name": "10kg",
+      "unit": "kg",
+      "weight": 10,
+      "sort_order": 6,
+      "status": 1
+    },
+    {
+      "id": 7,
+      "name": "一件",
+      "unit": "件",
+      "weight": 15,
+      "sort_order": 7,
+      "status": 1
+    }
+  ],
+  "system_config": [
+    {
+      "id": 1,
+      "key": "market_name",
+      "value": "广西六堡茶大宗交易市场",
+      "type": "string",
+      "description": "市场名称"
+    },
+    {
+      "id": 2,
+      "key": "price_update_time",
+      "value": "09:30",
+      "type": "string",
+      "description": "价格更新时间"
+    },
+    {
+      "id": 3,
+      "key": "price_publish_time",
+      "value": "10:00",
+      "type": "string",
+      "description": "价格发布时间"
+    },
+    {
+      "id": 4,
+      "key": "timezone",
+      "value": "Asia/Shanghai",
+      "type": "string",
+      "description": "时区"
+    },
+    {
+      "id": 5,
+      "key": "currency",
+      "value": "CNY",
+      "type": "string",
+      "description": "货币"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2a$10$mwEI34Duih8I7B3sIVyO/O1F19vOTNxlTMSj/Vq9LpC/GGj3yNszC",
+      "name": "管理员",
+      "role": "admin",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "username": "operator",
+      "password": "$2a$10$mwEI34Duih8I7B3sIVyO/O1F19vOTNxlTMSj/Vq9LpC/GGj3yNszC",
+      "name": "操作员",
+      "role": "operator",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "username": "viewer",
+      "password": "$2a$10$mwEI34Duih8I7B3sIVyO/O1F19vOTNxlTMSj/Vq9LpC/GGj3yNszC",
+      "name": "查看者",
+      "role": "viewer",
+      "status": 1
+    }
+  ],
+  "data_sources": [
+    {
+      "id": 1,
+      "name": "人工录入",
+      "type": "manual",
+      "status": 1
+    },
+    {
+      "id": 2,
+      "name": "东和茶仓API",
+      "type": "api",
+      "status": 1
+    },
+    {
+      "id": 3,
+      "name": "茶交所行情",
+      "type": "api",
+      "status": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "code": "LP-2024-001",
+      "name": "六堡茶2023年陈",
+      "category_id": 1,
+      "grade_id": 1,
+      "year": 2023,
+      "origin_id": 1,
+      "spec_id": 5,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "code": "LP-2024-002",
+      "name": "六堡茶2022年陈",
+      "category_id": 1,
+      "grade_id": 2,
+      "year": 2022,
+      "origin_id": 1,
+      "spec_id": 5,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "code": "LP-2024-003",
+      "name": "六堡茶2021年陈",
+      "category_id": 1,
+      "grade_id": 2,
+      "year": 2021,
+      "origin_id": 2,
+      "spec_id": 5,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "code": "LP-2024-004",
+      "name": "六堡茶2020年陈",
+      "category_id": 3,
+      "grade_id": 1,
+      "year": 2020,
+      "origin_id": 1,
+      "spec_id": 5,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "code": "LP-2024-005",
+      "name": "六堡茶2019年陈",
+      "category_id": 3,
+      "grade_id": 1,
+      "year": 2019,
+      "origin_id": 1,
+      "spec_id": 5,
+      "status": 1
+    }
+  ],
+  "daily_prices": [
+    {
+      "id": 1,
+      "product_id": 1,
+      "price_date": "2026-01-01",
+      "price_buy": 280,
+      "price_sell": 320,
+      "price_avg": 300,
+      "price_change": 10,
+      "price_change_percent": 3.45,
+      "volume": 5000,
+      "turnover": 1500000,
+      "status": 1
+    },
+    {
+      "id": 2,
+      "product_id": 2,
+      "price_date": "2026-01-01",
+      "price_buy": 380,
+      "price_sell": 420,
+      "price_avg": 400,
+      "price_change": 8,
+      "price_change_percent": 2.05,
+      "volume": 3200,
+      "turnover": 1280000,
+      "status": 1
+    },
+    {
+      "id": 3,
+      "product_id": 3,
+      "price_date": "2026-01-01",
+      "price_buy": 500,
+      "price_sell": 540,
+      "price_avg": 520,
+      "price_change": 9,
+      "price_change_percent": 1.76,
+      "volume": 2100,
+      "turnover": 1092000,
+      "status": 1
+    },
+    {
+      "id": 4,
+      "product_id": 4,
+      "price_date": "2026-01-01",
+      "price_buy": 670,
+      "price_sell": 690,
+      "price_avg": 680,
+      "price_change": -3.5,
+      "price_change_percent": -0.51,
+      "volume": 1500,
+      "turnover": 1020000,
+      "status": 1
+    },
+    {
+      "id": 5,
+      "product_id": 5,
+      "price_date": "2026-01-01",
+      "price_buy": 830,
+      "price_sell": 870,
+      "price_avg": 850,
+      "price_change": 115,
+      "price_change_percent": 15.65,
+      "volume": 800,
+      "turnover": 680000,
+      "status": 1
+    }
+  ]
+}

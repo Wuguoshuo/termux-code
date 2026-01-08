@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#1890ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>六堡茶价格 - 移动端</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vant@4.8/lib/index.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #f5f5f5; }
+    .header { background: linear-gradient(135deg, #1890ff, #001529); color: #fff; padding: 16px; text-align: center; }
+    .header h1 { font-size: 18px; font-weight: bold; }
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #eee; }
+    .stat-grid .item { background: #fff; padding: 12px 8px; text-align: center; }
+    .stat-grid .value { font-size: 20px; font-weight: bold; color: #1890ff; }
+    .stat-grid .label { font-size: 12px; color: #999; margin-top: 4px; }
+    .section { background: #fff; margin-top: 12px; padding: 12px; }
+    .section-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; border-left: 3px solid #1890ff; padding-left: 8px; }
+    .price-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+    .price-item:last-child { border-bottom: none; }
+    .price-item .name { font-size: 14px; flex: 1; }
+    .price-item .price { font-size: 16px; font-weight: bold; margin: 0 12px; }
+    .price-item .change { font-size: 14px; }
+    .change.up { color: #ff4d4f; }
+    .change.down { color: #52c41a; }
+    .tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #fff; display: flex; border-top: 1px solid #eee; }
+    .tab-bar .tab { flex: 1; padding: 8px; text-align: center; font-size: 12px; color: #999; }
+    .tab-bar .tab.active { color: #1890ff; }
+    .content { padding-bottom: 60px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <h1>🏭 六堡茶价格中心</h1>
+    </div>
+    <div class="stat-grid">
+      <div class="item"><div class="value" id="totalProducts">-</div><div class="label">品种</div></div>
+      <div class="item"><div class="value" id="risingCount" style="color:#ff4d4f">-</div><div class="label">上涨</div></div>
+      <div class="item"><div class="value" id="fallingCount" style="color:#52c41a">-</div><div class="label">下跌</div></div>
+      <div class="item"><div class="value" id="avgPrice">-</div><div class="label">均价</div></div>
+    </div>
+    
+    <div class="content">
+      <div class="section">
+        <div class="section-title">🔥 涨幅榜</div>
+        <div id="risingList"></div>
+      </div>
+      
+      <div class="section">
+        <div class="section-title">❄️ 跌幅榜</div>
+        <div id="fallingList"></div>
+      </div>
+      
+      <div class="section">
+        <div class="section-title">📦 快速查询</div>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="searchInput" placeholder="输入品名搜索" style="flex:1;padding:8px;border:1px solid #ddd;border-radius:4px;">
+          <button onclick="search()" style="padding:8px 16px;background:#1890ff;color:#fff;border:none;border-radius:4px;">搜索</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="tab-bar">
+      <div class="tab active" onclick="switchTab('home')">行情</div>
+      <div class="tab" onclick="switchTab('prices')">报价</div>
+      <div class="tab" onclick="switchTab('alerts')">提醒</div>
+      <div class="tab" onclick="switchTab('profile')">我的</div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vant@4/lib/index.min.js"></script>
+  <script>
+    const API_URL = 'http://localhost:3000/api/v1';
+    
+    async function loadData() {
+      try {
+        const [statsRes, pricesRes] = await Promise.all([
+          fetch(`${API_URL}/statistics/daily`).then(r => r.json()),
+          fetch(`${API_URL}/prices/today`).then(r => r.json())
+        ]);
+        
+        const stats = statsRes.data || {};
+        const prices = pricesRes.data?.prices || [];
+        
+        document.getElementById('totalProducts').textContent = stats.total_products || 0;
+        document.getElementById('risingCount').textContent = stats.rising_count || 0;
+        document.getElementById('fallingCount').textContent = stats.falling_count || 0;
+        document.getElementById('avgPrice').textContent = '¥' + (stats.avg_price || 0).toFixed(0);
+        
+        // 渲染涨幅榜
+        const rising = prices.filter(p => p.changePercent > 0).sort((a, b) => b.changePercent - a.changePercent).slice(0, 5);
+        document.getElementById('risingList').innerHTML = rising.map(p => `
+          <div class="price-item">
+            <span class="name">${p.productName}</span>
+            <span class="price">¥${p.price.toFixed(2)}</span>
+            <span class="change up">▲${p.changePercent.toFixed(2)}%</span>
+          </div>
+        `).join('');
+        
+        // 渲染跌幅榜
+        const falling = prices.filter(p => p.changePercent < 0).sort((a, b) => a.changePercent - b.changePercent).slice(0, 5);
+        document.getElementById('fallingList').innerHTML = falling.map(p => `
+          <div class="price-item">
+            <span class="name">${p.productName}</span>
+            <span class="price">¥${p.price.toFixed(2)}</span>
+            <span class="change down">▼${p.changePercent.toFixed(2)}%</span>
+          </div>
+        `).join('');
+        
+      } catch (error) {
+        console.error('加载数据失败:', error);
+      }
+    }
+    
+    function switchTab(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    
+    function search() {
+      const keyword = document.getElementById('searchInput').value;
+      if (keyword) {
+        window.location.href = `/prices?keyword=${encodeURIComponent(keyword)}`;
+      }
+    }
+    
+    loadData();
+    setInterval(loadData, 60000); // 1分钟刷新
+  </script>
+</body>
+</html>

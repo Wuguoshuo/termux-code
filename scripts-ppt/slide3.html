@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html { background: #ffffff; }
+body {
+  width: 720pt; height: 405pt; margin: 0; padding: 0;
+  background: #f8f9fa;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  padding: 40pt;
+  flex: 1;
+  overflow-y: auto;
+}
+.title {
+  background: #5D4E37;
+  padding: 12pt 25pt;
+  border-radius: 8pt;
+  margin-bottom: 20pt;
+}
+.title h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 24pt;
+}
+.character-table {
+  background: #ffffff;
+  border-radius: 8pt;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.character-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+}
+.character-table th {
+  background: #5D4E37;
+  color: #ffffff;
+  padding: 12pt 15pt;
+  text-align: left;
+  font-size: 14pt;
+  font-weight: bold;
+}
+.character-table td {
+  padding: 10pt 15pt;
+  border-bottom: 1pt solid #ecf0f1;
+  font-size: 13pt;
+  color: #34495E;
+}
+.character-table tr:last-child td {
+  border-bottom: none;
+}
+.character-table tr:nth-child(even) {
+  background: #f8f9fa;
+}
+</style>
+</head>
+<body>
+<div class="content">
+  <div class="title">
+    <h2>主要人物</h2>
+  </div>
+  <div class="character-table">
+    <table>
+      <tr>
+        <th>人物</th>
+        <th>年龄跨度</th>
+        <th>身份</th>
+        <th>性格特点</th>
+      </tr>
+      <tr>
+        <td>陈阿三</td>
+        <td>18-30岁</td>
+        <td>茶厂学徒→接班人</td>
+        <td>憨厚、执着、机灵、有正义感</td>
+      </tr>
+      <tr>
+        <td>刘师傅</td>
+        <td>50-60岁</td>
+        <td>制茶师傅</td>
+        <td>顽固、刀子嘴豆腐心、追求完美</td>
+      </tr>
+      <tr>
+        <td>王胖子</td>
+        <td>18-30岁</td>
+        <td>学徒</td>
+        <td>油滑、偷懒、嘴巴甜</td>
+      </tr>
+      <tr>
+        <td>李小花</td>
+        <td>20-28岁</td>
+        <td>技术员→恋人</td>
+        <td>聪明、坚持原则、有自己的想法</td>
+      </tr>
+      <tr>
+        <td>周经理</td>
+        <td>40-50岁</td>
+        <td>茶厂经理（反派）</td>
+        <td>务实、追求利润、急功近利</td>
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>
